@@ -64,6 +64,7 @@
         <thead>
           <tr>
             <th>Example</th>
+            <th>Pause</th>
             <th>Keyboard</th>
             <th>ARIA Roles</th>
             <th>ARIA Property/States</th>
@@ -84,37 +85,80 @@
             </td>
             <td>
               <ul>
+                <li>Hover only</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
                 <li>tab to previous/next slide buttons</li>
                 <li>tab to interactive content in slides</li>
               </ul>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+              <ul>
+                <li><code>role="button"</code> on next/previous buttons</li>
+              </ul>  
+            <td>
+            </td>
+            <td><em>none</em></td>
             <td>
               <ul>
-                <li>Focus disappears when tabbing to links on hidden slides</li>
+                <li>Next/Previous buttons have accessible names</li>
               </ul>
             </td>
-            <td></td>
+            <td>
+              <ul>
+                <li>No information that there is a carousel composite widget on the page</li>
+                <li>No information on the number of slides or which slide is visible</li>
+                <li>No information on where slide content starts and ends</li>
+                <li>Keyboard focus disappears when tabbing to links on "hidden" slides</li>
+              </ul>
+            </td>
+            <td>
+              none
+            </td>
           </tr>
           <tr>
             <td>
               <a href="carousel-2.html">Example 2: PayPal A11y Plugin</a>
               <p><a href="https://paypal.github.io/bootstrap-accessibility-plugin/">PayPal Accessibility Plug-in</a></p>
             </td>
+            <td>
+              <ul>
+                <li>Cycling through images disabled</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>tab to previous/next slide buttons</li>
+                <li>tab to listbox and use arrow keys to move through list items</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li><code>role="listbox"</code> on the <code>div[carousel-inner]</code> containing the slide (<code>div[item]</code>) elements</li>
+                <li><code>role="option"</code> for each <code>div[item]</code> containing slide  content</li>
+                <li><code>role="button"</code> on next/previous buttons</li>
+              </ul>  
+            </td>
+            <td>
+              <ul>
+                <li><code>aria-selected</code> on the each <code>div[item]</code> elements</li>
+              </ul>  
+            </td>
             <td></td>
             <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+              <ul>
+                <li>Cycling through images disabled will be considered a problem by most designers</li>
+              </ul>
+            </td>
           </tr>
           <tr>
             <td>
               <a href="carousel-3.html">Example 3: Tabpanel A11y Plugin</a>
               <p>Modified version of PayPal Accessibility Plugin for Carousel to use tabpanel design pattern, instead of list</p>
             </td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
