@@ -120,7 +120,7 @@
           <tr>
             <td>
               <a href="carousel-2.html">Example 2: PayPal A11y Plugin</a>
-              <p><a href="https://paypal.github.io/bootstrap-accessibility-plugin/">PayPal Accessibility Plug-in</a></p>
+              <p><a href="https://paypal.github.io/bootstrap-accessibility-plugin/">PayPal Accessibility Plug-in information</a></p>
             </td>
             <td>
               <ul>
@@ -135,14 +135,14 @@
             </td>
             <td>
               <ul>
-                <li><code>role="listbox"</code> on the <code>div[carousel-inner]</code> containing the slide (<code>div[item]</code>) elements</li>
-                <li><code>role="option"</code> for each <code>div[item]</code> containing slide  content</li>
+                <li><code>role="listbox"</code> on the <code>div.carousel-inner</code> containing the slide (<code>div.item</code>) elements</li>
+                <li><code>role="option"</code> for each <code>div.item</code> containing slide  content</li>
                 <li><code>role="button"</code> on next/previous buttons</li>
               </ul>  
             </td>
             <td>
               <ul>
-                <li><code>aria-selected</code> on the each <code>div[item]</code> elements</li>
+                <li><code>aria-selected</code> on the each <code>div[role=option]</code> elements, set to <code>true</code> for the visible element, otherwise set to <code>false</code></li>
               </ul>  
             </td>
             <td></td>
@@ -158,13 +158,39 @@
               <a href="carousel-3.html">Example 3: Tabpanel A11y Plugin</a>
               <p>Modified version of PayPal Accessibility Plugin for Carousel to use tabpanel design pattern, instead of list</p>
             </td>
+            <td>
+              <ul>
+                <li>hover</li>
+                <li>Keyboard focus on tablist (note: does not restart)</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>tab to previous/next slide buttons</li>
+                <li>tab to listbox and use arrow keys to move through list items</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li><code>role="tablist"</code> on the <code>ul.carousel-indicators</code> containing the (<code>li[data-slide-to=N]</code>) elements</li>
+                <li><code>role="tab"</code> on the <code><code>li[data-slide-to=N]</code></code> used as an indication of the number of slides and which slide is visible</li>
+                <li><code>role="tabpanel"</code> for each <code>div[item]</code> containing slide  content</li>
+                <li><code>role="button"</code> on next/previous buttons</li>
+              </ul>  
+            </td>
+            <td>
+              <ul>
+                <li><code>aria-selected</code> on the each <code>li[data-slide-to=N]</code> elements, set to <code>true</code> for the visible element, otherwise set to <code>false</code></li>
+                <li><code>aria-controls</code> on the each <code>li[data-slide-to=N]</code> elements, points to the corresponding <code>div[role=tabpanel]</code> element</li>
+              </ul>  
+            </td>
             <td></td>
             <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+              <ul>
+                <li>Cycling through images disabled will be considered a problem by most designers</li>
+              </ul>
+            </td>
           </tr>
         </tbody>  
       
