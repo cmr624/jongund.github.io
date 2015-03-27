@@ -167,7 +167,7 @@
             <td>
               <ul>
                 <li>tab to previous/next slide buttons</li>
-                <li>tab to listbox and use arrow keys to move through list items</li>
+                <li>tab to tablist and use arrow keys to move through list items</li>
               </ul>
             </td>
             <td>
@@ -180,6 +180,7 @@
             </td>
             <td>
               <ul>
+                <li><code>tabindex</code> on the each <code>li[data-slide-to=N]</code> elements, set to <code>0</code> if selected, otherwise set to <code-1</code></li>
                 <li><code>aria-selected</code> on the each <code>li[data-slide-to=N]</code> elements, set to <code>true</code> for the visible element, otherwise set to <code>false</code></li>
                 <li><code>aria-controls</code> on the each <code>li[data-slide-to=N]</code> elements, points to the corresponding <code>div[role=tabpanel]</code> element</li>
               </ul>  
