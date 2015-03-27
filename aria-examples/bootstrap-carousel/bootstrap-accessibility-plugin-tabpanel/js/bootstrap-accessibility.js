@@ -342,28 +342,41 @@
 
         $tablist.attr('role', 'tablist')
         $tabs.attr('role', 'tab')
+        
         $tabs.focus(function() {
           $this.carousel('pause')
         });
-        
-        var ta = $tabs.toArray();
-        for (i = 0; i < ta.length; i++) {
-          $(ta[i]).attr('aria-controls', 'tabpanel-' + index + '-' + i)
-        }
-          
+
         $tabpanels.attr('role', 'tabpanel')
         var tpa = $tabpanels.toArray();
         for (i = 0; i < tpa.length; i++) {
           $(tpa[i]).attr('id', 'tabpanel-' + index + '-' + i)
         }
+                
+        var ta = $tabs.toArray();
+        for (i = 0; i < ta.length; i++) {
+          var j = i + 1;
+          $(ta[i]).attr('aria-controls', 'tabpanel-' + index + '-' + i)
+          
+          var caption = $this.find('#tabpanel-' + index + '-' + i).find('h3').text()
+          
+          var tabName = document.createElement('span')
+          tabName.setAttribute('class', 'sr-only')
+          tabName.innerHTML='Slide ' + j + " of " + ta.length
+          if (caption) tabName.innerHTML += ": " +  caption
+          
+          $(ta[i]).append(tabName)
+        }
+          
+
 
         var spanPrev = document.createElement('span')
         spanPrev.setAttribute('class', 'sr-only')
-        spanPrev.innerHTML='Previous'
+        spanPrev.innerHTML='Slide'
 
         var spanNext = document.createElement('span')
         spanNext.setAttribute('class', 'sr-only')
-        spanNext.innerHTML='Next'
+        spanNext.innerHTML='Slide'
 
         prev.attr('role', 'button')
         next.attr('role', 'button')
@@ -383,21 +396,45 @@
 
       var slideCarousel = $.fn.carousel.Constructor.prototype.slide
       $.fn.carousel.Constructor.prototype.slide = function (type, next) {
-        var $active = this.$element.find('.item.active')
+        var $element = this.$element
+          , $active = $element.find('[role=tabpanel].active')
           , $next = next || $active[type]()
+          , $tab
 
+        console.log("type: " + type + " active: " + $active.attr('id') + " next: " + $next.attr('id'))
+
+        $tab = this.$element.find('li[aria-controls=' + $active.attr('id') + ']')
+        if ($tab) {
+          $tab.attr({'aria-selected':false, 'tabIndex': '-1'})
+          console.log("active: " + $active.attr('id') + " tab: " + $tab.attr('aria-controls'))
+        }  
+
+        $tab = this.$element.find('li[aria-controls="' + $next.attr('id') + '"]')
+        if ($tab) {
+          $tab.attr({'aria-selected':true, 'tabIndex': '0'})
+          console.log("next: " + $next.attr('id') + " tab: " + $tab.attr('aria-controls'))
+        }  
+        
         slideCarousel.apply(this, arguments)
 
       $active
-        .one('slid.bs.carousel', function () {
-          $active.attr({'aria-selected':false, 'tabIndex': '-1'})
-          $next.attr({'aria-selected':true, 'tabIndex': '0'})
+        .one('bsTransitionEnd', function () {
+          console.log("active: " + $active.attr('id') + " next: " + $next.attr('id'))
+          var $tab
+          
+          $tab = $element.find('li[aria-controls="' + $active.attr('id') + '"]')
+          if ($tab) $tab.attr({'aria-selected':false, 'tabIndex': '-1'})
+
+          $tab = $element.find('li[aria-controls="' + $next.attr('id') + '"]')
+          if ($tab) $tab.attr({'aria-selected': true, 'tabIndex': '0'})
+          
             //.focus()
        })
       }
 
      var $this;
      $.fn.carousel.Constructor.prototype.keydown = function (e) {
+     console.log("keydown: " + e.keyCode + " target: " + e.target)
      $this = $this || $(this)
      if(this instanceof Node) $this = $(this)
      var $ul = $this.closest('[role=tablist]')
