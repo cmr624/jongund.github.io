@@ -352,6 +352,16 @@
         for (i = 0; i < tpa.length; i++) {
           $(tpa[i]).attr('id', 'tabpanel-' + index + '-' + i)
         }
+
+        console.log("role: " + $this.attr('role') + " aria-label: " + $this.attr('aria-label'))
+
+        
+        if (typeof $this.attr('role') !== 'string') $this.attr('role', 'complementary');
+        if (typeof $this.attr('aria-labelledby') !== 'string') {
+          if (typeof $this.attr('title') !== 'string') {
+            if (typeof $this.attr('aria-label') !== 'string') $this.attr('aria-label', 'Carousel content with ' + tpa.length + ' slides');
+          }
+        }  
                 
         var ta = $tabs.toArray();
         for (i = 0; i < ta.length; i++) {
@@ -401,18 +411,18 @@
           , $next = next || $active[type]()
           , $tab
 
-        console.log("type: " + type + " active: " + $active.attr('id') + " next: " + $next.attr('id'))
+//        console.log("type: " + type + " active: " + $active.attr('id') + " next: " + $next.attr('id'))
 
         $tab = this.$element.find('li[aria-controls=' + $active.attr('id') + ']')
         if ($tab) {
           $tab.attr({'aria-selected':false, 'tabIndex': '-1'})
-          console.log("active: " + $active.attr('id') + " tab: " + $tab.attr('aria-controls'))
+//          console.log("active: " + $active.attr('id') + " tab: " + $tab.attr('aria-controls'))
         }  
 
         $tab = this.$element.find('li[aria-controls="' + $next.attr('id') + '"]')
         if ($tab) {
           $tab.attr({'aria-selected':true, 'tabIndex': '0'})
-          console.log("next: " + $next.attr('id') + " tab: " + $tab.attr('aria-controls'))
+//          console.log("next: " + $next.attr('id') + " tab: " + $tab.attr('aria-controls'))
         }  
         
         slideCarousel.apply(this, arguments)

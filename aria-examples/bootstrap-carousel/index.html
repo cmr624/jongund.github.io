@@ -172,8 +172,14 @@
             </td>
             <td>
               <ul>
+                <li><code>role="complementary"</code> on the <code>div.carousel</code> containing the all the elements associated with the carousel (note: if there is already a role, the "complementary" landmark will not be added)</li>
                 <li><code>role="tablist"</code> on the <code>ul.carousel-indicators</code> containing the (<code>li[data-slide-to=N]</code>) elements</li>
-                <li><code>role="tab"</code> on the <code><code>li[data-slide-to=N]</code></code> used as an indication of the number of slides and which slide is visible</li>
+                <li><code>role="tab"</code> on the <code><code>li[data-slide-to=N]</code></code> used as an indication of the number of slides and which slide is visible
+                  <ul>
+                    <li>Accessible name is added as child text content using the css <code>sr-only</code> class to label each slide</li>
+                    <li>If the slide includes a <code>.carousel-caption</code> with an <code>h3</code> element, the h3 content is used as part of the name</li>
+                  </ul>
+                </li>
                 <li><code>role="tabpanel"</code> for each <code>div[item]</code> containing slide  content</li>
                 <li><code>role="button"</code> on next/previous buttons</li>
               </ul>  
@@ -189,7 +195,7 @@
             <td></td>
             <td>
               <ul>
-                <li>Cycling through images disabled will be considered a problem by most designers</li>
+                <li>Cycling through images is not restarted when stopped by the keyboard, this may be considered a problem by some designers</li>
               </ul>
             </td>
           </tr>
