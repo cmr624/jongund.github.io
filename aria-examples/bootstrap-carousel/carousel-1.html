@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Bootstrap Carousel Accessibility Examples</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/carousel.css" rel="stylesheet">
+    <link href="../css/table.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+    <header role="banner">
+      <h1>Bootstrap 3.3 Carousel Accessibility Examples</h1>
+    </header>
+
+    <div class="navbar-wrapper">
+      <div class="container-fuild">
+        <!-- NAVBAR
+        ================================================== -->
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="carousel-1.html">Example 1: No A11y Plugin</a></li>
+                <li><a href="carousel-2.html">Example 2: Paypal A11y Plugin</a></li>
+                <li><a href="carousel-3.html">Example 3: Tabpanel A11y Plugin</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+
+      </div>
+    </div>
+
+    <main role="main">
+      <h1>Example 1: No A11y Plugin</h1>
+      <!-- Carousel
+      ================================================== -->
+      
+      <h2 class="sr-only">Carousel</h2>
+           <div id="myCarousel" class="carousel slide" data-ride="carousel" data-pause="hover">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+              <li data-target="#myCarousel" data-slide-to="3"></li>
+              <li data-target="#myCarousel" data-slide-to="4"></li>
+              <li data-target="#myCarousel" data-slide-to="5"></li>
+            </ol>
+    
+                <div class="carousel-inner">
+                  <div class="item active">
+                
+                    <div data-caption="#caption1">
+                      <a href="http://will.illinois.edu/highlights/story/rick-steves-dynamic-europe-amsterdam-prague-berlin">
+                        <img src="images/amsterdamslide__800x600.jpg" alt="Red Light Walking Tour in Amsterdam" />
+                      </a>
+                    </div>           
+                    <div class="carousel-caption">
+                  
+                      <h2>
+                        <a href="/highlights/story/rick-steves-dynamic-europe-amsterdam-prague-berlin">
+                          Rick Steves&#8217; Dynamic Europe: Amsterdam, Prague, Berlin
+                        </a>
+                      </h2>               
+                  
+                      <div class="hidden-xs hidden-sm">
+                        <p>7 pm Tuesday, March 3, on WILL-TV</p>
+                      </div>
+                    </div>  <!-- .carousel-caption -->
+                  </div>   <!-- .item -->
+              
+                  <div class="item ">
+                    <div data-caption="#caption2">
+                  
+                      <a href="http://will.illinois.edu/willtravel/tour/sept.-14-24-or-27-2015-southwest-england-paris-masterpieces-mysteries">
+                        <img src="images/lands-endslide__800x600.jpg" alt="Land&#039;s End in Cornwall" />
+                      </a>
+                  
+                    </div>           
+                    <div class="carousel-caption">
+                  
+                      <h2>
+                        <a href="http://will.illinois.edu/willtravel/tour/sept.-14-24-or-27-2015-southwest-england-paris-masterpieces-mysteries">
+                          Travel with WILL to Southwest England and Paris
+                        </a>
+                      </h2>
+                  
+                      <div class="hidden-xs hidden-sm"><p>Sept. 14 to Sept. 24 or 27: Masterpiece and Mysteries Tour</p></div>
+                    </div>  <!-- .carousel-caption -->
+                  </div>   <!-- .item -->
+              
+                  <div class="item ">
+                    <div data-caption="#caption3">
+                  
+                      <a href="http://www.pbs.org/about/news/archive/2015/pbs-most-trusted/">
+                          <img src="images/trustslide-2__800x600.jpg" alt="Mom and daughter play Daniel Tiger game on notebook computer." />
+                      </a>
+                  
+                    </div>           
+                    <div class="carousel-caption">
+                  
+                      <h2>
+                        <a href="http://www.pbs.org/about/news/archive/2015/pbs-most-trusted/">
+                          Survey confirms that PBS and member stations are America&#8217;s most trusted institution
+                        </a>
+                      </h2>
+                  
+                      <div class="hidden-xs hidden-sm"></div>
+                    </div>  <!-- .carousel-caption -->
+                  </div>   <!-- .item -->
+              
+                  <div class="item ">
+                    <div data-caption="#caption4">
+                  
+                      <a href="http://www.will.illinois.edu/highlights/story/foyles-war-revisited">
+                        <img src="images/foyleswarslide__800x600.jpg" alt="" />
+                      </a>
+                  
+                    </div>           
+                    <div class="carousel-caption">
+                  
+                      <h2>
+                        <a href="http://www.will.illinois.edu/highlights/story/foyles-war-revisited">
+                          Foyle&#8217;s War Revisited
+                        </a>
+                      </h2>               
+                  
+                      <div class="hidden-xs hidden-sm">
+                        <p>8 pm Sunday, March 8, on WILL-TV: Sneak peak at the final season.</p>
+                      </div>
+                    </div>  <!-- .carousel-caption -->
+                  </div>   <!-- .item -->
+              
+                  <div class="item ">
+                    <div data-caption="#caption5">
+                  
+                      <a href="http://www.will.illinois.edu/highlights/story/great-britcom-vote-all-star-edition">
+                        <img src="images/britcomdavidslide__800x600.jpg" alt="British flag with WILL-TV host David Thiel" />
+                      </a>
+                  
+                    </div>           
+                    <div class="carousel-caption">
+                  
+                      <h2>
+                        <a href="/highlights/story/great-britcom-vote-all-star-edition">
+                          Great BritCom Vote: 7 pm Sat., March 7, on WILL-TV
+                        </a>
+                      </h2>               
+                  
+                      <div class="hidden-xs hidden-sm"></div>
+                    </div>  <!-- .carousel-caption -->
+                  </div>   <!-- .item -->
+              
+                  <div class="item ">
+                    <div data-caption="#caption6">
+                  
+                      <a href="http://www.will.illinois.edu/midamericangardener">
+                        <img src="images/mag800-2__800x600.jpg" alt="Mid-American Gardener panelists on the set" />
+                      </a>
+                  
+                    </div>           
+                    <div class="carousel-caption">
+                  
+                      <h2>
+                        <a href="http://www.will.illinois.edu/midamericangardener">
+                          Mid-American Gardener: Thursdays at 7 pm on WILL-TV
+                        </a>
+                      </h2>
+                  
+                      <div class="hidden-xs hidden-sm">
+                        <p>Watch the latest episodes.</p>
+                      </div>
+                    </div>  <!-- .carousel-caption -->
+                  </div>   <!-- .item -->    
+                </div> <!-- carousel-inner -->
+          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+          </a>
+          </div><!-- /.carousel -->
+      </main>
+
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+      <p>&copy; 2015 University of Illinois &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>
