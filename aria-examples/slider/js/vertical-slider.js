@@ -382,7 +382,7 @@ aria.widget.vslider.prototype.eventClick = function(event, slider) {
   if (event.target === slider.thumb) return;
   
   var diffY = event.pageY - slider.rail.offsetTop;
-  slider.valueNow = parseInt(((slider.valueMax - slider.valueMin) * diffY) / slider.sliderHeight);
+  slider.valueNow = slider.valueMax - parseInt(((slider.valueMax - slider.valueMin) * diffY) / slider.sliderHeight);
   slider.updateThumbPosition();
   
   event.preventDefault();

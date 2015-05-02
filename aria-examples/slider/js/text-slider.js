@@ -22,11 +22,11 @@
  
 window.addEventListener('load', function () {
 
-  var sliders = document.getElementsByClassName('aria-widget-slider');
+  var sliders = document.getElementsByClassName('aria-widget-text-slider');
   
-  [].forEach.call(sliders, function(slider) {
-    if (slider && !slider.done) {
-      var s = new aria.widget.tslider(slider);
+  [].forEach.call(sliders, function(tslider) {
+    if (tslider && !tslider.done) {
+      var s = new aria.widget.tslider(tslider);
       s.initSlider();
     }  
   });
@@ -100,10 +100,7 @@ aria.widget.tslider = function(node, options, width) {
   if (thumbs) this.thumb = thumbs[0];
   else return false;
   
-  var values = node.getElementsByClassName('value');
-  if (values) this.value = values[0];
-  else return false;
-  this.value.innerHTML = "0";
+
 
   this.thumbHeight  = 28;
   this.thumbWidth   = 8;
@@ -124,17 +121,19 @@ aria.widget.tslider = function(node, options, width) {
   
   if (typeof height === 'Number') this.sliderHeight = height;
   if (typeof width  === 'Number') this.sliderWidth  = width;
-  
+
+  this.values      = [];
+  this.value_nodes = node.getElementsByClassName('value');
+  for (var i = 0; this.value_nodes[i]; i++) {
+    this.values.push(this.value_nodes[i].innerHTML);
+  }
+
   this.valueMin = 0;
-  this.valueMax = options.length;
+  this.valueMax = (this.values.length-1);
 
   this.valueNow = 0;
-  this.valueText = parseInt(this.thumb.getAttribute('aria-valuetext'));
-  
-  if (!this.valueNow  || (this.valueText === '')) {
-    this.valueNow = 0;
-    this.valueText = options[0];
-  }
+  this.valueText = parseInt(this.values[this.valueNow]);
+  this.valueInc = 1;
   
   this.thumb.setAttribute('role', 'slider');
   this.thumb.setAttribute('aria-valuetext', this.valueText);
@@ -164,10 +163,15 @@ aria.widget.tslider.prototype.initSlider = function() {
   this.thumb.style.width  = this.thumbWidth + "px";
   this.thumb.style.top    = (-1 * this.thumbHeight/2) + "px";
   
-  this.value.style.top    = (this.rail.offsetTop - (this.value.offsetHeight / 2) + 2) + "px";
-  this.value.style.left   = (this.rail.offsetLeft + this.rail.offsetWidth + 5) + "px";
-
   this.rangeLeftPos =  this.rail.offsetLeft;
+  
+  var pos = 0;
+  var diff = this.sliderWidth / (this.value_nodes.length - 1)
+  for (var i = 0; this.value_nodes[i]; i++) {
+    
+    this.value_nodes[i].style.left = (pos - (this.value_nodes[i].offsetWidth/2))  + "px";
+    pos = pos + diff;
+  }
   
   var slider = this;
   
@@ -216,15 +220,11 @@ aria.widget.tslider.prototype.updateThumbPosition = function() {
   if (this.valueNow < this.valueMin) this.valueNow = this.valueMin;
 
   this.thumb.setAttribute('aria-valuenow', this.valueNow);   
+  this.thumb.setAttribute('aria-valuetext', this.values[this.valueNow]);   
   
   var pos = Math.round((this.valueNow * this.sliderWidth) / (this.valueMax - this.valueMin)) - (this.thumbWidth/2);
   
   this.thumb.style.left = pos + "px";
-  
-  this.value.innerHTML = this.valueNow.toString();
-  
-  aria.widget.tslider.updateColorBox();
-  
 };
 
 /**
@@ -259,14 +259,6 @@ aria.widget.tslider.prototype.eventKeyDown = function(event, slider) {
     updateValue(slider.valueNow+slider.valueInc);
     break;
 
-  case slider.keyCode.pageDown:
-    updateValue(slider.valueNow-slider.valueJump);
-    break;
-
-  case slider.keyCode.pageUp:
-    updateValue(slider.valueNow+slider.valueJump);
-    break;
-  
   case slider.keyCode.home:
     updateValue(slider.valueMin);
     break;

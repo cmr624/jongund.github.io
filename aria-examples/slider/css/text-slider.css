@@ -3,7 +3,7 @@
 div.aria-widget-text-slider {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
-  height: 4em;
+  height: 120px;
 }
 
 div.aria-widget-text-slider .rail {
@@ -23,9 +23,9 @@ div.aria-widget-text-slider .thumb  {
   position: relative;
 }
 
-div.aria-widget-text-slider .value  {
-  width:      2em;
-  text-align: right;
+div.aria-widget-text-slider div.value  {
+  text-align: center;
+  display: block;
   position: absolute;
 }
 
@@ -39,32 +39,11 @@ div.focus .rail {
   background-color: #CCC;
 }
 
-#idColorBox {
-  width: 200px;
-  height: 200px;
-  border: black solid medium;
-  text-align: center;
-  padding: 0.25em;
-}
 
-#idSliders {
-  float: left;
-  width: 350px;
-}
-
-#idColorInfo {
-  padding-top: 5px;
-  margin-left: 370px;
-}
-
-#id_kbd {
-  clear: both;
-}
-
-
-label {
+div.aria-widget-text-slider label {
   display: block;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
+  font-weight: bold;
 }
 

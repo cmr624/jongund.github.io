@@ -31,6 +31,7 @@ div.aria-widget-vertical-slider .value  {
   width: 8em;
 }
 
+
 div.focus .thumb  {
   border: 1px solid #444;
   background-color: #888;
@@ -41,6 +42,10 @@ div.focus .rail {
   background-color: #CCC;
 }
 
+.label {
+  font-weight: bold;
+  font-size: 110%;
+}
 
 #id_kbd {
   clear: both;
