@@ -8,7 +8,7 @@ div.aria-widget-text-slider {
 
 div.aria-widget-text-slider .rail {
   margin: 2px;
-  padding: 0;
+  padding: 1px;
   background-color: #eee;
   border: 1px solid #888;
   position: relative;

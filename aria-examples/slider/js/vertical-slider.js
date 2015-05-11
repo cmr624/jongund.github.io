@@ -201,7 +201,7 @@ aria.widget.vslider.prototype.initSlider = function() {
     slider.eventClick(event, slider);
   };
 
-  this.container.addEventListener('click', eventClick);
+  this.rail.addEventListener('click', eventClick);
 
   this.updateThumbPosition();
 
