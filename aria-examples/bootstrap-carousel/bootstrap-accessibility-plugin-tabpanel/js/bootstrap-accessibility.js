@@ -400,10 +400,10 @@
           tab.appendChild(tabName)
         }
           
-        $prev.attr('role', 'button')
+//        $prev.attr('role', 'button')
         $prev.attr('aria-label', 'Previous Slide')
         
-        $next.attr('role', 'button')
+//        $next.attr('role', 'button')
         $next.attr('aria-label', 'Next Slide')
 
         $tabs.each(function () {
