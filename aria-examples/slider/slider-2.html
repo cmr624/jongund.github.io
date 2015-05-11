@@ -51,7 +51,7 @@
         <div class="aria-widget-text-slider" >
           <div id="idFan" class="label">Fan</div>
           <div class="rail" style="width: 160px">
-            <div id="idFanThumb" class="thumb" aria-valuetext="Off" aria-labelledby="idFan"></div>
+            <div id="idFanThumb" class="thumb" aria-valuetext="Off" aria-labelledby="idFan" aria-orientation="horizontal"></div>
             <div class="value">Off</div>
             <div class="value">Low</div>
             <div class="value">High</div>
@@ -62,7 +62,7 @@
         <div class="aria-widget-text-slider" >
           <div id="idHeat" class="label">Heat/Cool</div>
           <div class="rail" style="width: 120px">
-            <div id="idHeatThumb" class="thumb" aria-valuetext="Off" aria-labelledby="idHeat"></div>
+            <div id="idHeatThumb" class="thumb" aria-valuetext="Off" aria-labelledby="idHeat" aria-orientation="horizontal"></div>
             <div class="value">Off</div>
             <div class="value">Heat</div>
             <div class="value">Cool</div>
@@ -133,7 +133,7 @@
           <td></td>
           <td>aria-orientation</td>
           <td>thumb</td>
-          <td>Indicates the orientation of the slider is "vertical" for the temperature slider</td>
+          <td>Indicates the orientation of the slider is "vertical" for the temperature slider or "horizontal" for the fan and temperature controls</td>
         </tr>
         <tr>
           <td></td>
@@ -225,8 +225,9 @@
           <td>OS X 10.9.5 (13F1066)</td>
           <td>
             <ul>
-              <li>Focus: Speaks accessible name and the value of the <code>aria-valuetext</code> property</li>
+              <li>Focus: Speaks he value of the <code>aria-valuetext</code> property, then accessible name and then "Vertical Slider" or "Slider"</li>
               <li>Value Change: Speaks value of the <code>aria-valuetext</code> property</li>
+              <li>When <code>aria-orentation="horizontal"</code> it identifies the widget as just "Slider", otherwise "Vertical Slider"</li>
             </ul>  
           </td>
         </tr>
