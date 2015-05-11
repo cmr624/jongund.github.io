@@ -403,20 +403,20 @@
         $prev.attr('aria-label', 'Previous Slide')
         $prev.keydown(function(e) {
           var k = e.which || e.keyCode
-          if (!/(10|13)/.test(k)) {
+          if (/(13|32)/.test(k)) {
             e.preventDefault()
             e.stopPropagation()           
-            $prev.tigger('click');
+            $prev.trigger('click');
           }
         });
         
         $next.attr('aria-label', 'Next Slide')
         $next.keydown(function(e) {
           var k = e.which || e.keyCode
-          if (!/(10|13)/.test(k)) {
+          if (/(13|32)/.test(k)) {
             e.preventDefault()
             e.stopPropagation()           
-            $next.tigger('click');
+            $next.trigger('click');
           }
         });
 
