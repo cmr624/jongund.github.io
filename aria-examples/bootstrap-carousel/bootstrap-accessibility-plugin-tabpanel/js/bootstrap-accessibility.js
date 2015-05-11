@@ -342,7 +342,6 @@
           , i
           , id_title  = 'id_title'
           , id_desc   = 'id_desc'
-          , id_status = 'id_status'
 
         $tablist.attr('role', 'tablist')
         
@@ -363,7 +362,6 @@
           $this.attr('aria-labelledby', id_title + " " + id_desc);
           $this.prepend('<h2 id="' + id_title + '" class="sr-only">Carousel content with ' + $tabpanels.length + ' slides.</h2>')
           $this.prepend('<p id="' + id_desc + '" class="sr-only">A carousel is a rotating set of images, rotation stops on keyboard focus on carousel tab controls or hovering the mouse pointer over images</p>')
-          $this.prepend('<p id="' + id_status + '" role="status" aria-live="polite" class="sr-only"></p>')
         }  
 
         $tabs.focus(function(event) {
@@ -404,32 +402,9 @@
           
         $prev.attr('role', 'button')
         $prev.attr('aria-label', 'Previous Slide')
-        $prev.keydown(function(e) {
-          var $status = $this.find('[role=status]')
-          ,k = e.which || e.keyCode
-
-          console.log("KEYBOARD PREV (" + k + "): " + $this.get(0).buttonPressed)
-
-          if (/32|13/.test(k)) { 
-            $this.get(0).buttonPressed = true
-          }
-
-        });
         
         $next.attr('role', 'button')
         $next.attr('aria-label', 'Next Slide')
-        $next.keydown(function(e) {
-          var $status = $this.find('[role=status]')
-          ,k = e.which || e.keyCode
-
-          console.log("KEYBOARD NEXT (" + k + "): " + $this.get(0).buttonPressed)
-
-          if (/32|13/.test(k)) { 
-            $this.get(0).buttonPressed = true
-          }
-
-          $status.html("");
-        });
 
         $tabs.each(function () {
           var item = $(this)
@@ -454,9 +429,6 @@
           , $prev_index = $tab_count -1
           , $next_index = 1
           , $id
-          , $status = $element.find('[role=status]')
-
-//        console.log("UPDATE: " + $element.get(0).buttonPressed)
         
         if ($next && $next.attr('id')) {
           $id = $next.attr('id')
@@ -469,14 +441,7 @@
           $next_index = $index + 1
           if ($next_index >= $tab_count) $next_index = 0
         }  
-        
-        $tab = this.$element.find('li[aria-controls="tabpanel-0-' + $index + '"]')
-        if ($element.get(0).buttonPressed) {
-//          console.log("UPDATE: " + $tab.text())
-          $status.html($tab.text());
-          $element.get(0).buttonPressed = false;
-        }  
-        
+                
         $prev_side.attr('aria-label', 'Show slide ' + ($prev_index+1) + ' of ' + $tab_count)
         $next_side.attr('aria-label', 'Show slide ' + ($next_index+1) + ' of ' + $tab_count)
 
@@ -517,17 +482,6 @@
       , $tabs      = $carousel.find('[role=tab]')
       , k = e.which || e.keyCode
       , index
-      , $status = $carousel.find('[role=status]')
-      
-      console.log("KEYBOARD (" + e.keyCode + "): " + $carousel.get(0).buttonPressed)
-
-      if (/32|13/.test(k)) {
-        $carousel.get(0).buttonPressed = true
-        return
-      }
-      
-      // if not a button press clear the live region, so doesn't confuse SR users in virtual mode
-      $status.html("");
        
       if (!/(37|38|39|40)/.test(k)) return
       
