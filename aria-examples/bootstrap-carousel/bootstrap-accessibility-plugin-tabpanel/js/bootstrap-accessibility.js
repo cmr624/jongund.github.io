@@ -360,8 +360,8 @@
         if (typeof $this.attr('role') !== 'string') {
           $this.attr('role', 'complementary');
           $this.attr('aria-labelledby', id_title + " " + id_desc);
-          $this.prepend('<h2 id="' + id_title + '" class="sr-only">Carousel content with ' + $tabpanels.length + ' slides.</h2>')
-          $this.prepend('<p id="' + id_desc + '" class="sr-only">A carousel is a rotating set of images, rotation stops on keyboard focus on carousel tab controls or hovering the mouse pointer over images</p>')
+          $this.prepend('<p  id="' + id_desc   + '" class="sr-only">A carousel is a rotating set of images, rotation stops on keyboard focus on carousel tab controls or hovering the mouse pointer over images</p>')
+          $this.prepend('<h2 id="' + id_title  + '" class="sr-only">Carousel content with ' + $tabpanels.length + ' slides.</h2>')
         }  
 
         $tabs.focus(function(event) {
@@ -399,13 +399,14 @@
           
           tab.appendChild(tabName)
         }
-          
+
+        // Add space bar behavior to prev and next buttons for SR compatibility
         $prev.attr('aria-label', 'Previous Slide')
         $prev.keydown(function(e) {
           var k = e.which || e.keyCode
           if (/(13|32)/.test(k)) {
             e.preventDefault()
-            e.stopPropagation()           
+            e.stopPropagation()
             $prev.trigger('click');
           }
         });
@@ -422,7 +423,7 @@
 
         $tabs.each(function () {
           var item = $(this)
-          if(item.hasClass('active')){
+          if(item.hasClass('active')) {
             item.attr({ 'aria-selected': 'true', 'tabindex' : '0' })
           }else{
             item.attr({ 'aria-selected': 'false', 'tabindex' : '-1' })
