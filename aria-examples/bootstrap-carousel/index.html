@@ -94,12 +94,14 @@
                 <li>tab to interactive content in slides</li>
               </ul>
             </td>
+            <td>
               <ul>
                 <li><code>role="button"</code> on next/previous buttons</li>
               </ul>  
-            <td>
             </td>
-            <td><em>none</em></td>
+            <td>
+              <em>none</em>
+            </td>
             <td>
               <ul>
                 <li>Next/Previous buttons have accessible names</li>
@@ -111,6 +113,7 @@
                 <li>No information on the number of slides or which slide is visible</li>
                 <li>No information on where slide content starts and ends</li>
                 <li>Keyboard focus disappears when tabbing to links on "hidden" slides</li>
+                <li>Needs keyboard event handlers to support "space bar" activation on buttons, since the button are made with <code>a</code> elements.</li>
               </ul>
             </td>
             <td>
@@ -145,8 +148,13 @@
                 <li><code>aria-selected</code> on the each <code>div[role=option]</code> elements, set to <code>true</code> for the visible element, otherwise set to <code>false</code></li>
               </ul>  
             </td>
-            <td></td>
-            <td></td>
+            <td>
+            </td>
+            <td>
+              <ul>
+                <li>Needs keyboard event handlers to support "space bar" activation on buttons, since the button are made with <code>a</code> elements.</li>
+              </ul>
+            </td>
             <td>
               <ul>
                 <li>Cycling through images disabled will be considered a problem by most designers</li>
@@ -191,7 +199,13 @@
                 <li><code>aria-controls</code> on the each <code>li[data-slide-to=N]</code> elements, points to the corresponding <code>div[role=tabpanel]</code> element</li>
               </ul>  
             </td>
-            <td></td>
+            <td>
+              <ul>
+                <li>Tab labels now include slide number and title information</li>
+                <li>Updates prev and next button labels to indicate next slide number and total number of slides</li>
+                <li>Provides keyboard event handlers to support "space bar" activation on prev and next buttons, since the button are made with <code>a</code> elements.</li>
+              </ul>
+            </td>
             <td></td>
             <td>
               <ul>
