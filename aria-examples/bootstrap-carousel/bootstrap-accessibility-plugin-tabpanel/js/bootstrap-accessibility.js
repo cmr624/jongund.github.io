@@ -400,11 +400,25 @@
           tab.appendChild(tabName)
         }
           
-//        $prev.attr('role', 'button')
         $prev.attr('aria-label', 'Previous Slide')
+        $prev.keydown(function(e) {
+          var k = e.which || e.keyCode
+          if (!/(10|13)/.test(k)) {
+            e.preventDefault()
+            e.stopPropagation()           
+            $prev.tigger('click');
+          }
+        });
         
-//        $next.attr('role', 'button')
         $next.attr('aria-label', 'Next Slide')
+        $next.keydown(function(e) {
+          var k = e.which || e.keyCode
+          if (!/(10|13)/.test(k)) {
+            e.preventDefault()
+            e.stopPropagation()           
+            $next.tigger('click');
+          }
+        });
 
         $tabs.each(function () {
           var item = $(this)
