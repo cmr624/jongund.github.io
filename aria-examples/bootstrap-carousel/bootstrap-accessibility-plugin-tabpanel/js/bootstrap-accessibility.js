@@ -333,8 +333,8 @@
   
       $('.carousel').each(function (index) {
         var $this = $(this)
-          , prev        = $this.find('[data-slide="prev"]')
-          , next        = $this.find('[data-slide="next"]')
+          , $prev        = $this.find('[data-slide="prev"]')
+          , $next        = $this.find('[data-slide="next"]')
           , $tablist    = $this.find('.carousel-indicators')
           , $tabs       = $this.find('.carousel-indicators li')
           , $tabpanels  = $this.find('.item')
@@ -402,10 +402,34 @@
           tab.appendChild(tabName)
         }
           
-        prev.attr('role', 'button')
-        prev.attr('aria-label', 'Previous Slide')
-        next.attr('role', 'button')
-        next.attr('aria-label', 'Next Slide')
+        $prev.attr('role', 'button')
+        $prev.attr('aria-label', 'Previous Slide')
+        $prev.keydown(function(e) {
+          var $status = $this.find('[role=status]')
+          ,k = e.which || e.keyCode
+
+          console.log("KEYBOARD PREV (" + k + "): " + $this.get(0).buttonPressed)
+
+          if (/32|13/.test(k)) { 
+            $this.get(0).buttonPressed = true
+          }
+
+        });
+        
+        $next.attr('role', 'button')
+        $next.attr('aria-label', 'Next Slide')
+        $next.keydown(function(e) {
+          var $status = $this.find('[role=status]')
+          ,k = e.which || e.keyCode
+
+          console.log("KEYBOARD NEXT (" + k + "): " + $this.get(0).buttonPressed)
+
+          if (/32|13/.test(k)) { 
+            $this.get(0).buttonPressed = true
+          }
+
+          $status.html("");
+        });
 
         $tabs.each(function () {
           var item = $(this)
@@ -454,7 +478,7 @@
         }  
         
         $prev_side.attr('aria-label', 'Show slide ' + ($prev_index+1) + ' of ' + $tab_count)
-        $next_side.attr('aria-label', 'Show silde ' + ($next_index+1) + ' of ' + $tab_count)
+        $next_side.attr('aria-label', 'Show slide ' + ($next_index+1) + ' of ' + $tab_count)
 
         
         slideCarousel.apply(this, arguments)
@@ -495,13 +519,14 @@
       , index
       , $status = $carousel.find('[role=status]')
       
-      console.log("KEYBOARD (" + e.keyCode + "): " + $carousel.get(0).usingKeyboard)
+      console.log("KEYBOARD (" + e.keyCode + "): " + $carousel.get(0).buttonPressed)
 
       if (/32|13/.test(k)) {
         $carousel.get(0).buttonPressed = true
         return
       }
       
+      // if not a button press clear the live region, so doesn't confuse SR users in virtual mode
       $status.html("");
        
       if (!/(37|38|39|40)/.test(k)) return
