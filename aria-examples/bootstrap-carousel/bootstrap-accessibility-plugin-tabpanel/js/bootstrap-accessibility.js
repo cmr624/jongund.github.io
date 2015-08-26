@@ -474,6 +474,7 @@
         $pauseCarousel = document.createElement('button')
         $pauseCarousel.className = "carousel-pause-button"
         $pauseCarousel.innerHTML = "Pause Carousel"
+        $pauseCarousel.setAttribute('title', "Pause carousel button can be used by screen reader users to stop carousel animations")
         $(document.body).prepend($pauseCarousel)
         $($pauseCarousel).click(function() {
           $this.carousel('pause')
