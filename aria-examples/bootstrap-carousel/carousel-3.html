@@ -221,6 +221,95 @@
         <div class="col-sm-1">
         </div>
       </div>
+      
+      <h2>Accessibility Features</h2>
+      
+      <h3>Keyboard Support</h2>
+      <dl>
+        <dt>Tabs</dt>
+        <dd>First interactive content of the carousel</dd>
+        <dd>A "Tab" is one of the dots indicating the number slides (e.g. tabpanels) in the carousel.</dd>
+        <dd>Tab key moves keyboard focus into and out of the list of tabs.</dd>
+        <dd>Left and up arrow expose the previous slide.</dd>
+        <dd>Right and down arrow expose the next slide.</dd>
+
+        <dt>Tabpanels</dt>
+        <dd>Second section of the carousel for possible interactive content</dd>
+        <dd>Tab key moves keyboard focus to any interactive content in a panel (i.e.. typically links and form controls).</dd>
+        <dd>Only interactive elements on the visible slide can get focus.</dd>
+        <dd>Some carousels may not include links, form controls or other interactive content.</dd>
+
+        <dt>Previous and Next Buttons Buttons</dt>
+        <dd>Tab key moves keyboard focus into and out of the button elements.</dd>
+        <dd>Enter or space can be used to activate the button.</dd>
+        <dd>Since <code>bootstrap.js</code> uses <code>a</code> elements to define previous and next slide buttons, keyboard events need to be added to support the space key to support the default way to activate a "button", since <code>a</code> elements only respond to the enter key</dd>
+        
+        <dt>"Pause Carousel" Button (at beginning of page)</dt>
+        <dd>Uses <code>button</code> element keyboard support.</dd>
+        
+      </dl>
+
+      <h3>Keyboard Focus Styling</h2>
+      <dl>
+        <dt>Tabs</dt>
+        <dd>When a "Tab" receives focus a box appears around the list of tabs.</dd>
+        <dd>The tabs styling changes to include a partially transparent background image.</dd>
+        <dd>The currently selected tab is solid white</dd>
+
+        <dt>Tabpanels</dt>
+        <dd>Styling of interactive content is controlled by the authors style sheets</dd>
+
+        <dt>Previous and Next Buttons Buttons</dt>
+        <dd>When a button receives focus a border becomes visible and a background gradient similar to the hover styling appears.</dd>
+
+        <dt>"Pause Carousel" Button (at beginning of page)</dt>
+        <dd>The <code>button</code> is positioned off screen using CSS absolute positioning when it does not have keyboard focus.</dd>
+        <dd>The <code>button</code> is positioned in the upper left corner of the screen when it receives keyboard focus and becomes visible.</dd>
+        
+      </dl>
+      
+      <h3>Use of ARIA Roles</h3>
+      <dl>
+        <dt><code>complementary</code> Landmark Role</dt>
+        <dd>The <code>complementary</code> landmark role is used to identify all the content and interactive controls
+        associated with the carousel widget.</dd>
+        <dd>The landmark provides a means to navigate to and identify the carousel features.</dd>
+      
+        <dt><code>tablist</code> and <code>tab</code> Roles</dt>
+        <dd>Are defined for the dots used to indicate the number of slides and which slide is selected.</dd>
+      
+        <dt><code>tabpanel</code> Role</dt>
+        <dd>Are defined for the slide content.</dd>
+      
+        <dt><code>button</code> Role</dt>
+        <dd>The <code>button</code> roles is used to override semantics of the <code>a</code> element 
+        used to define the previous and next slide buttons.</dd>
+        <dd>Links typically take you to a new web page or a section of a web page, while buttons change
+        the state of a web page, in this case which slide is visible.</dd>
+      
+        <dt></dt>
+        <dd></dd>
+      
+      </dl>
+      
+      <h3>Screen Reader Specific Features</h3>
+
+      <dl>
+        <dt>Carousel Pause Button</dt>
+        <dd>Added as first item on the page using scripting.</dd>
+        <dd>In virtual mode (e.g. windows screen reader) a screen reader user can identify that  
+         there is a carousel and stop the rotation</dd>
+        <dd>When the virtual cursor is on content within a slide and the slide changes the virtual cursor
+        moves the virtual cursor back to the top of the page.  Kind of like ground hog day for a screen 
+        reader user.</dd>
+        
+        <dt>Carousel Description</dt>
+        <dd>At the beginning of the carousel, off screen content is used to identify and describe the carousel.</dd>
+      
+      </dl>
+      
+      
+      
     </main>
 
 
