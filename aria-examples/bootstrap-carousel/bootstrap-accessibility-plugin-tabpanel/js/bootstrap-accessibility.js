@@ -414,12 +414,14 @@
 //          $(this).addClass('focus')
           setTablistHighlightBox()
           $($tablistHighlight).addClass('focus')
+          $(this).parents('.carousel').addClass('contrast')
         })
 
         $tabs.blur(function(event) {
           $(this).parent().removeClass('active');
 //          $(this).removeClass('focus')
           $($tablistHighlight).removeClass('focus')
+          $(this).parents('.carousel').removeClass('contrast')
         })
 
         
@@ -515,6 +517,15 @@
             $prev.trigger('click');
           }
         });
+
+        $prev.focus(function() {
+          $(this).parents('.carousel').addClass('contrast')
+        })        
+
+        $prev.blur(function() {
+          $(this).parents('.carousel').removeClass('contrast')
+        })        
+        
         
         $next.attr('aria-label', 'Next Slide')
         $next.keydown(function(e) {
@@ -525,6 +536,22 @@
             $next.trigger('click');
           }
         });
+
+        $next.focus(function() {
+          $(this).parents('.carousel').addClass('contrast')
+        })        
+
+        $next.blur(function() {
+          $(this).parents('.carousel').removeClass('contrast')
+        })        
+        
+        $('.carousel-inner a').focus(function() {
+          $(this).parents('.carousel').addClass('contrast')
+        })        
+
+         $('.carousel-inner a').blur(function() {
+          $(this).parents('.carousel').removeClass('contrast')
+        })        
 
         $tabs.each(function () {
           var item = $(this)
