@@ -395,6 +395,7 @@
           , $tablistHighlight
           , $pauseCarousel
           , $tab
+          , $complementaryLandmark
           , $is_paused = false
           , offset
           , height
@@ -476,11 +477,15 @@
         // create button for screen reader users to stop rotation of carousel
 
         // create button for screen reader users to pause carousel for virtual mode review
+        $complementaryLandmark = document.createElement('aside')
+        $complementaryLandmark.setAttribute('aria-label', 'carousel pause/play control')
+        $(document.body).prepend($complementaryLandmark)
+        
         $pauseCarousel = document.createElement('button')
         $pauseCarousel.className = "carousel-pause-button"
         $pauseCarousel.innerHTML = "Pause Carousel"
         $pauseCarousel.setAttribute('title', "Pause/Play carousel button can be used by screen reader users to stop carousel animations")
-        $(document.body).prepend($pauseCarousel)
+        $($complementaryLandmark).append($pauseCarousel)
         $($pauseCarousel).click(function() {
           if ($is_paused) {
             $pauseCarousel.innerHTML = "Pause Carousel"
